@@ -1,0 +1,47 @@
+<?php
+$productArray = $block->getType();
+$isStatus = $block->getStatus();
+$isNumber = $block->getNumber();
+$numberleft = $productArray['numberleft'];
+$type = $productArray['type'];
+$qty = $productArray['qty'];
+$status = $productArray['status'];
+$fontfamily = $block->getFontFamily();
+$fontcolor = $block->getFontColor();
+$fontsize = $block->getFontSize()."px";
+$fontweight = $block->getFontWeight();
+$textalign = $block->getTextAlign();
+$backgroundcolor = $block->getBackgroundColor();
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <style>
+        #stockstatus{
+            font-family: "<?php echo $fontfamily; ?>";
+            color: <?php echo $fontcolor; ?>;
+            font-weight: <?php echo $fontweight; ?>;
+            font-size: <?php echo $fontsize; ?>;
+            border-color: #0000aa; border: 2px solid #FF0000;
+            border-radius: 5px; text-align: <?php echo $textalign;?>;
+            float: left; background-color: <?php echo $backgroundcolor;?>;
+            width: 100%;}
+
+    </style>
+</head>
+<body>
+    <?php
+        if($isNumber=='1'&&$type=='simple') {
+            if ($numberleft >= $qty) {
+                echo "<p class='wow tada' data-wow-iteration='2' style='font-weight: bolder; float: right;'>Only $qty Left !!!</p>";
+                echo '<br />';
+            }
+        }
+        if($isStatus=='1') {
+            echo "<p class='wow shake' data-wow-duration='5s' data-wow-delay='2s' data-wow-iteration='10' id='stockstatus'>$status</p>";
+            echo '<br />';
+        }
+    ?>
+</body>
+
+</html>
